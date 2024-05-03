@@ -5,3 +5,4 @@ Contents
 - `scripts` contains scripts to process FIG input/output
 - `data` contains example data to process with `scripts`
 - `output` contains example output produced by `scripts` against `data`
+- `docker` contains Dockerfiles to build Docker images
