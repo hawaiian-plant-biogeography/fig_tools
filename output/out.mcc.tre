@@ -1,0 +1,37 @@
+#NEXUS
+
+	Begin taxa;
+	Dimensions ntax=26;
+	Taxlabels
+		Kadua_acuminata___Kauai_SKW_609_ILM196
+		Kadua_affinis___Hawaii_Lorence_5897_ILM247
+		Kadua_axillaris___Maui_Perlman_15370_ILM221
+		Kadua_centranthoides___Maui_Wood_11309_ILM237
+		Kadua_cookiana___Kauai_Perlman_24732_ILM181
+		Kadua_cordata_ssp_cordata_Kauai_Wood_18404_ILM197
+		Kadua_cordata_ssp_cordata_Oahu_NT_3119_ILM236
+		Kadua_cordata_ssp_remyi_Lanai_Oppenheimer_H100731_ILM213
+		Kadua_cordata_ssp_waimeae_Kauai_Wood_16599_ILM198
+		Kadua_degeneri___Oahu_Welton_556_ILM203
+		Kadua_elatior___Kauai_Wood_18126_ILM200
+		Kadua_fluviatilis___Kauai_Wood_18450_ILM195
+		Kadua_flynni___Kauai_Wood_16560_ILM189
+		Kadua_foggiana___Kauai_Wood_15232_ILM187
+		Kadua_formosa___Maui_Wood_13483_ILM185
+		Kadua_fosbergii___Maui_Oppenheimer_H21604_ILM209
+		Kadua_haupuensis___Kauai_Trask_sn_ILM180
+		Kadua_knudsenii___Kauai_Wood_17085_ILM186
+		Kadua_laxiflora___Maui_Oppenheimer_H71604_ILM238
+		Kadua_lichtlei___Ua_Huku_Wood_10514_ILM230
+		Kadua_littoralis___Molokai_Perlman_17523_ILM239
+		Kadua_nukuhivensis___Nuku_Hiva_Wood_6337_ILM229
+		Kadua_parvula___Oahu_Wood_1933_ILM245
+		Kadua_rapensis___Rapa_Perlman_17938_ILM228
+		Kadua_st-johnii___Kauai_NT_2829_ILM222
+		Kadua_tryblium___Kauai_Wood_18128_ILM202
+		;
+End;
+
+Begin trees;
+tree TREE1 = [&R]((((((((((Kadua_cordata_ssp_waimeae_Kauai_Wood_16599_ILM198[&index=12]:0.464360,Kadua_haupuensis___Kauai_Trask_sn_ILM180[&index=13]:0.464360)[&index=27,posterior=1.000000,age_95%_HPD={0.189167,0.752451}]:0.079515,Kadua_cookiana___Kauai_Perlman_24732_ILM181[&index=14]:0.543875)[&index=28,posterior=1.000000,age_95%_HPD={0.270582,0.871193}]:0.081861,(Kadua_cordata_ssp_cordata_Kauai_Wood_18404_ILM197[&index=11]:0.405019,Kadua_elatior___Kauai_Wood_18126_ILM200[&index=10]:0.405019)[&index=29,posterior=1.000000,age_95%_HPD={0.173419,0.732643}]:0.220717)[&index=30,posterior=1.000000,age_95%_HPD={0.379516,1.01056}]:0.086943,Kadua_flynni___Kauai_Wood_16560_ILM189[&index=15]:0.712679)[&index=31,posterior=1.000000,age_95%_HPD={0.380564,1.08371}]:0.134948,((((Kadua_degeneri___Oahu_Welton_556_ILM203[&index=6]:0.449825,Kadua_parvula___Oahu_Wood_1933_ILM245[&index=5]:0.449825)[&index=32,posterior=1.000000,age_95%_HPD={0.161359,0.745318}]:0.084117,Kadua_cordata_ssp_cordata_Oahu_NT_3119_ILM236[&index=4]:0.533942)[&index=33,posterior=1.000000,age_95%_HPD={0.183313,0.84462}]:0.172117,(Kadua_laxiflora___Maui_Oppenheimer_H71604_ILM238[&index=7]:0.452114,Kadua_littoralis___Molokai_Perlman_17523_ILM239[&index=8]:0.452114)[&index=34,posterior=1.000000,age_95%_HPD={0.202986,0.780237}]:0.253945)[&index=35,posterior=1.000000,age_95%_HPD={0.408129,1.17135}]:0.054080,Kadua_cordata_ssp_remyi_Lanai_Oppenheimer_H100731_ILM213[&index=9]:0.760139)[&index=36,posterior=1.000000,age_95%_HPD={0.433386,1.24725}]:0.087488)[&index=37,posterior=1.000000,age_95%_HPD={0.457213,1.34735}]:1.023650,Kadua_st-johnii___Kauai_NT_2829_ILM222[&index=16]:1.871277)[&index=38,posterior=1.000000,age_95%_HPD={0.937493,3.20222}]:0.277860,(Kadua_acuminata___Kauai_SKW_609_ILM196[&index=17]:0.687578,Kadua_fluviatilis___Kauai_Wood_18450_ILM195[&index=18]:0.687578)[&index=39,posterior=1.000000,age_95%_HPD={0.225632,1.3241}]:1.461560)[&index=40,posterior=1.000000,age_95%_HPD={1.22234,3.65808}]:0.220456,((Kadua_centranthoides___Maui_Wood_11309_ILM237[&index=19]:0.984306,Kadua_foggiana___Kauai_Wood_15232_ILM187[&index=20]:0.984306)[&index=41,posterior=1.000000,age_95%_HPD={0.421063,1.68067}]:0.573220,(Kadua_formosa___Maui_Wood_13483_ILM185[&index=21]:1.006555,Kadua_knudsenii___Kauai_Wood_17085_ILM186[&index=22]:1.006555)[&index=42,posterior=1.000000,age_95%_HPD={0.434369,1.69867}]:0.550971)[&index=43,posterior=1.000000,age_95%_HPD={0.798188,2.50799}]:0.812067)[&index=44,posterior=1.000000,age_95%_HPD={1.38283,4.02716}]:1.876492,(((Kadua_axillaris___Maui_Perlman_15370_ILM221[&index=24]:0.958333,Kadua_fosbergii___Maui_Oppenheimer_H21604_ILM209[&index=23]:0.958333)[&index=45,posterior=1.000000,age_95%_HPD={0.348925,1.82002}]:0.288900,Kadua_affinis___Hawaii_Lorence_5897_ILM247[&index=25]:1.247233)[&index=46,posterior=1.000000,age_95%_HPD={0.595312,2.30599}]:0.999587,Kadua_tryblium___Kauai_Wood_18128_ILM202[&index=26]:2.246820)[&index=47,posterior=1.000000,age_95%_HPD={1.20367,3.8296}]:1.999265)[&index=48,posterior=1.000000,age_95%_HPD={2.21877,6.01215}]:0.589109,((Kadua_lichtlei___Ua_Huku_Wood_10514_ILM230[&index=2]:0.726957,Kadua_nukuhivensis___Nuku_Hiva_Wood_6337_ILM229[&index=1]:0.726957)[&index=49,posterior=1.000000,age_95%_HPD={0.235851,1.33948}]:0.393913,Kadua_rapensis___Rapa_Perlman_17938_ILM228[&index=3]:1.120870)[&index=50,posterior=1.000000,age_95%_HPD={0.435236,1.97182}]:3.714324)[&index=51,posterior=1.000000,age_95%_HPD={3.04977,7.06912}]:0.000000;
+End;
