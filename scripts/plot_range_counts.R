@@ -66,13 +66,13 @@ tbl_regions = colSums(df_ranges)
 fmt_ranges = data.frame(names=names(tbl_ranges), counts=as.vector(tbl_ranges))
 write.csv(fmt_ranges, file=tbl_range_fn, quote=F, row.names=F)
 pdf(plot_region_fn, height=7, width=7)
-barplot(fmt_regions$counts, names=fmt_regions$names, xlab="Region", ylab="Count", las=2)
+barplot(fmt_ranges$counts, names=fmt_ranges$names, xlab="Range", ylab="Count", las=2)
 dev.off()
 
 # write range count table and barplot
 fmt_regions = data.frame(names=names(tbl_regions), counts=as.vector(tbl_regions))
 write.csv(fmt_regions, file=tbl_region_fn, quote=F, row.names=F)
 pdf(plot_range_fn, height=7, width=7)
-barplot(fmt_ranges$counts, names=fmt_ranges$names, xlab="Range", ylab="Count", las=2)
+barplot(fmt_regions$counts, names=fmt_regions$names, xlab="Region", ylab="Count", las=2)
 dev.off()
 
