@@ -19,7 +19,9 @@ if (length(args) == 3) {
 # filesystem
 plot_fp = "./output/"
 plot_region_fn = paste0(plot_fp, "plot_region_histogram.pdf")
-plot_range_fn = paste0(plot_fp, "plot_range_histogram.pdf")
+plot_range_fn  = paste0(plot_fp, "plot_range_histogram.pdf")
+tbl_region_fn  = paste0(plot_fp, "dat_region_histogram.csv")
+tbl_range_fn   = paste0(plot_fp, "dat_range_histogram.csv")
 
 # function
 bits2regions = function(x) {
@@ -59,14 +61,18 @@ tbl_ranges = tbl_ranges[match_ranges]
 
 # get counts of regions
 tbl_regions = colSums(df_ranges) 
-print(tbl_regions)
 
-# plot ranges histogram
-pdf(plot_range_fn, height=7, width=7)
-barplot(tbl_ranges, xlab="Range", ylab="Count", las=2)
-dev.off()
-
-# plot regions histogram
+# write region count table and barplot
+fmt_ranges = data.frame(names=names(tbl_ranges), counts=as.vector(tbl_ranges))
+write.csv(fmt_ranges, file=tbl_range_fn, quote=F, row.names=F)
 pdf(plot_region_fn, height=7, width=7)
-barplot(tbl_regions, xlab="Region", ylab="Count", las=2)
+barplot(fmt_regions$counts, names=fmt_regions$names, xlab="Region", ylab="Count", las=2)
 dev.off()
+
+# write range count table and barplot
+fmt_regions = data.frame(names=names(tbl_regions), counts=as.vector(tbl_regions))
+write.csv(fmt_regions, file=tbl_region_fn, quote=F, row.names=F)
+pdf(plot_range_fn, height=7, width=7)
+barplot(fmt_ranges$counts, names=fmt_ranges$names, xlab="Range", ylab="Count", las=2)
+dev.off()
+
