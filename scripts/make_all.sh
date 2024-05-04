@@ -16,6 +16,7 @@ fi
 # files
 PHY_FN=${RESULT_PREFIX}.tre
 ANC_FN=${RESULT_PREFIX}.states.txt
+MODEL_FN=${RESULT_PREFIX}.model.txt
 RANGE_FN=${CLADE_PREFIX}_range.nex
 LABEL_FN=${CLADE_PREFIX}_range_label.csv
 MCC_FN="./output/out.mcc.tre"
@@ -40,5 +41,19 @@ fi
 if [ -f $RANGE_FN ] && [ -f $LABEL_FN ]; then
     Rscript ./scripts/plot_range_counts.R ${RANGE_FN} ${LABEL_FN} ${REGION_NAMES}
 fi
+
+# Plot FIG param posteriors
+if [ -f $MODEL_FN ]; then
+    Rscript ./scripts/plot_model_posterior.R ${MODEL_FN}
+fi
+
+# Plot RJ prob effects
+
+# Plot region rates vs. regions vs. time
+
+# Plot region features vs. time
+
+# Plot region rates vs. features
+
 
 # ... more plots ...

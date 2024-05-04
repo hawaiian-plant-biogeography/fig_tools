@@ -9,7 +9,6 @@ labels_fn = "./input/kadua_data/kadua_range_label.csv"
 region_names = "GNKOMHZ"
 
 args = commandArgs(trailingOnly=T)
-print(args)
 if (length(args) > 0) {
     labels_file = args[1]
     region_names = args[2]
@@ -29,7 +28,6 @@ for (i in 1:nrow(df_states)) {
     labs[i] = y
 }
 names(labs) = as.character( 0:(nrow(df_states)-1))
-print(labs)
 
 # pass the labels vector and file name to the processing script
 anc_tree <- processAncStates(state_fn, state_labels = labs)
