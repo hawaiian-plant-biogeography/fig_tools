@@ -48,8 +48,11 @@ if [ -f $MODEL_FN ]; then
 fi
 
 # Plot RJ prob effects
+if [ -f $MODEL_FN ]; then
+    Rscript ./scripts/plot_rj_effects.R ${MODEL_FN}
+fi
 
-# Plot region rates vs. regions vs. time
+# Plot region rates vs. time
 
 # Plot region features vs. time
 
