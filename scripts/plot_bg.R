@@ -1,23 +1,12 @@
 library(RevGadgets)
 library(ggplot2)
 
-mcc_fn = "./output/out.mcc.tre"
-state_fn = "./output/out.states.tre"
-plot_anc_pie_fn = "./output/out.states_prob.pdf"
-plot_anc_map_fn = "./output/out.states_map.pdf"
-labels_fn = "./input/kadua_data/kadua_range_label.csv"
-region_names = "GNKOMHZ"
-
-args = commandArgs(trailingOnly=T)
-if (length(args) > 0) {
-    labels_fn = args[1]
-    region_names = args[2]
-}
-
+mcc_file = "../../output/Kadua_rj_8_10_103.mcc.tre"
+state_file = "../../output/Kadua_rj_8_10_103.states.tre"
 
 # Create the labels vector
-regions = unlist(strsplit(region_names, "")[[1]])
-df_states = read.csv(labels_fn, colClasses=c("range"="character"))
+regions = c("R", "K", "O", "M", "H", "Z")
+df_states = read.csv("state_labels.n6.txt", colClasses=c("range"="character"))
 labs = rep(NA, nrow(df_states))
 for (i in 1:nrow(df_states)) {
     # get range strings
@@ -31,18 +20,10 @@ for (i in 1:nrow(df_states)) {
 names(labs) = as.character( 0:(nrow(df_states)-1))
 
 # pass the labels vector and file name to the processing script
-anc_tree <- processAncStates(state_fn, state_labels = labs)
-
-tmp = anc_tree@data
-root_idx = nrow(tmp)
-tmp = tmp[ tmp$index == root_idx, ]
-tmp[ ,c("start_state_1","start_state_1_pp","start_state_2","start_state_2_pp","start_state_3") ] = tmp[ ,c("start_state_1","start_state_1_pp","start_state_2","start_state_2_pp","start_state_3") ]
-
-anc_tree@data[ anc_tree@data$index == root_idx, ] = tmp
-
+anc_tree <- processAncStates(state_file, state_labels = labs)
 
 # read in the tree 
-mcc_tree <- readTrees(paths = mcc_fn)
+mcc_tree <- readTrees(paths = mcc_file)
 
 # Uncomment to see states needing color assignments
 #print(anc_tree@state_labels)
@@ -88,9 +69,9 @@ pie <- plotAncStatesPie(t = anc_tree,
                         state_transparency = 1.0,
                         timeline = TRUE) +
   # Move the legend 
-  theme(legend.position.inside = c(0.95, 0.7) )
+  theme(legend.position = c(0.95, 0.7) )
 
-pdf(plot_anc_pie_fn, height=9, width=12)
+pdf("kadua_anc_pie.pdf", height=9, width=12)
 print(pie)
 dev.off()
 
@@ -98,7 +79,7 @@ map <- plotAncStatesMAP(t = anc_tree,
                         # Include cladogenetic events
                         cladogenetic = T,
                         # Pass in the same color vector
-                        # node_color = colors,
+                        node_color = colors,
                         # Print tip label states
                         tip_labels_states = TRUE,
                         # Offset those text labels slightly
@@ -112,10 +93,24 @@ map <- plotAncStatesMAP(t = anc_tree,
                         state_transparency = 1.0,
                         timeline = TRUE) +
   # adjust legend position and remove color guide
-  theme(legend.position.inside = c(0.95, 0.36) )
+  theme(legend.position = c(0.95, 0.36) )
 
-pdf(plot_anc_map_fn, height=9, width=12)
+pdf("kadua_anc_map.pdf", height=9, width=12)
 print(map)
 dev.off()
 
 
+# plot the FBD tree
+mcc = plotTree(tree = mcc_tree, 
+            timeline = T, 
+            tip_labels_size = 3, 
+            age_bars_width = 2,
+            node_age_bars = T) + 
+    # use ggplot2 to move the legend and make 
+    # the legend background transparent
+        theme(legend.position=c(.05, .6),
+              legend.background = element_rect(fill="transparent"))
+
+pdf("kadua_mcc_hpd.pdf", height=9, width=12)
+print(mcc)
+dev.off()
