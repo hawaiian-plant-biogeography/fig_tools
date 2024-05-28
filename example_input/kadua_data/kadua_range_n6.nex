@@ -1,0 +1,36 @@
+#NEXUS
+
+Begin data;
+Dimensions ntax=26 nchar=6;
+Format datatype=Standard missing=? gap=- labels="01";
+Matrix
+												[RKOMHZ]
+Kadua_cordata_ssp_cordata_Oahu_NT_3119_ILM236								000100     
+Kadua_degeneri___Oahu_Welton_556_ILM203                 					001000 
+Kadua_parvula___Oahu_Wood_1933_ILM245                   					001000 
+Kadua_laxiflora___Molokai_Perlman_6647_ILM244           					000100 
+Kadua_littoralis___Kauai_NT_3918_ILM179                 					011100 
+Kadua_cordata_ssp_remyi_Lanai_Oppenheimer_H100731_ILM213					000100 
+Kadua_flynni___Kauai_Wood_16560_ILM189                  					010000 
+Kadua_cookiana___Kauai_Perlman_24732_ILM181             					010010 
+Kadua_cordata_ssp_cordata_Kauai_Wood_18404_ILM197       					010000 
+Kadua_elatior___Kauai_Wood_18126_ILM200                 					011100 
+Kadua_haupuensis___Kauai_Trask_sn_ILM180                					010000 
+Kadua_cordata_ssp_waimeae_Kauai_Wood_16599_ILM198       					010000 
+Kadua_st-johnii___Kauai_NT_2829_ILM222                  					010000 
+Kadua_fluviatilis___Kauai_Wood_18450_ILM195             					011000 
+Kadua_acuminata___Kauai_SKW_609_ILM196                  					011110 
+Kadua_rapensis___Rapa_Perlman_17938_ILM228              					000001 
+Kadua_tryblium___Kauai_Wood_17164_ILM190                					010000 
+Kadua_affinis___Kauai_Wood_18532_ILM204                 					011110 
+Kadua_fosbergii___Oahu_Wood_4157_ILM211                 					001100	 
+Kadua_axillaris___Maui_Perlman_15370_ILM221             					000110 
+Kadua_centranthoides___Hawaii_Wood_12415_ILM184         					011110 
+Kadua_foggiana___Kauai_Wood_15161_ILM188               					 	010000 
+Kadua_formosa___Maui_Wood_13483_ILM185                					 	000100 
+Kadua_knudsenii___Kauai_Wood_15564_ILM191							 		010000
+Kadua_nukuhivensis___Nuku_Hiva_Wood_6337_ILM229								000001
+Kadua_lichtlei___Ua_Huku_Wood_10514_ILM230									000001
+    ;
+End;
+
