@@ -10,12 +10,12 @@ library(data.table)
 # arguments
 my_args = commandArgs(trailingOnly=T)
 
-feature_fn = "./input/hawaii_data/feature_summary.csv"
-age_fn = "./input/hawaii_data/age_summary.csv"
-desc_fn = "./input/hawaii_data/feature_description.csv"
-res_fn = "./input/results/multifig/"
-#res_fn = "./input/results/Kadua_crash_M1_777"
-json_fn = "./input/results/Kadua_M1_100.param.json"
+feature_fn = "./example_input/hawaii_data/feature_summary.csv"
+age_fn     = "./example_input/hawaii_data/age_summary.csv"
+desc_fn    = "./example_input/hawaii_data/feature_description.csv"
+res_fn     = "./example_input/results/"
+# res_fn = "./input/results/Kadua_crash_M1_777"
+# json_fn = "./input/results/Kadua_M1_100.param.json"
 region_names = "GNKOMHZ"
 
 if (length(my_args) == 4) {
@@ -37,10 +37,13 @@ df_desc = read.csv(desc_fn, sep=",", header=T)
 
 
 # files
-res_fp = "./input/results"
-res_prefix = "Kadua_crash_M1_777"
+res_fp = "./example_input/results"
+res_prefix = "divtime_timefig"
 res_pattern = paste0(res_prefix, ".time.*")
 files = list.files(path=res_fp, pattern=res_pattern, full.names=T)
+
+print(files)
+print(2)
 
 regions = strsplit(region_names, "")[[1]]
 ages = c(0, df_age$mean_age, 22)

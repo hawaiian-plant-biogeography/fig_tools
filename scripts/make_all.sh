@@ -1,62 +1,64 @@
 #!/usr/bin/env sh
 
 # args
-RESULT_PREFIX=$1
-CLADE_PREFIX=$2
-GEO_PREFIX=$3
-REGION_NAMES=$4
-
-if [ -z $1 ]; then
-    RESULT_PREFIX="./example_input/results/divtime_timefig"
-    CLADE_PREFIX="./example_input/kadua_data"
-    GEO_PREFIX="./example_input/hawaii_data"
-    REGION_NAMES="GNKOMHZ"
-fi
+REGION_NAMES="GNKOMHZ"
 
 # files
-PHY_FN=${RESULT_PREFIX}.tre
-ANC_FN=${RESULT_PREFIX}.states.txt
-MODEL_FN=${RESULT_PREFIX}.model.txt
-RANGE_FN=${CLADE_PREFIX}_range.nex
-LABEL_FN=${CLADE_PREFIX}_range_label.csv
+PHY_FN="./example_input/results/divtime_timefig.tre"
+ANC_FN="./example_input/results/divtime_timefig.states.txt"
+MODEL_FN="./example_input/results/divtime_timefig.model.txt"
+RANGE_FN="./example_input/kadua_data/kadua_range_n7.nex"
+LABEL_FN="./example_input/kadua_data/kadua_range_label.csv"
 MCC_FN="./output/out.mcc.tre"
 ASE_FN="./output/out.states.tre"
 
 # Make MCC and States tree files
-if [ -f $PHY_FN ] && [ -f $ANC_FN ]; then
-    rb --args ${PHY_FN} ${ANC_FN} --file ./scripts/make_tree.Rev
+FILE_MISSING=0
+for i in $PHY_FN $ANC_FN $MODEL_FN $RANGE_FN $LABEL_FN; do
+    if [ ! -f $i ]; then
+        echo "ERROR: ${i} not found"
+        FILE_MISSING=1
+    fi
+done
+
+if [ $FILE_MISSING == 1 ]; then
+    echo "ERROR: exit due to missing files"
+    exit
 fi
+
+# Create RevBayes summary tree files
+rb --args ${PHY_FN} ${ANC_FN} --file ./scripts/make_tree.Rev
 
 # Plot MCC tree
-if [ -f $MCC_FN ]; then
-    Rscript ./scripts/plot_mcc_tree.R # ${MCC_FN}
-fi
+#
+# Example: 
+#   Rscript ./scripts/plot_mcc_tree.R ./output/out.mcc.tre
+#
+Rscript ./scripts/plot_mcc_tree.R ${MCC_FN}
 
 # Plot States tree
-if [ -f $ASE_FN ]; then
-    Rscript ./scripts/plot_states_tree.R ${LABEL_FN} ${REGION_NAMES}
-fi
+#
+# Example:
+#   Rscript ./scripts/plot_states_tree.R ./output/out.states.tre ./example_input/kadua_data/kadua_range_label.csv GNKOMHZ
+
+Rscript ./scripts/plot_states_tree.R ${LABEL_FN} ${REGION_NAMES}
 
 # Plot range and region counts
-if [ -f $RANGE_FN ] && [ -f $LABEL_FN ]; then
-    Rscript ./scripts/plot_range_counts.R ${RANGE_FN} ${LABEL_FN} ${REGION_NAMES}
-fi
+Rscript ./scripts/plot_range_counts.R ${RANGE_FN} ${LABEL_FN} ${REGION_NAMES}
 
 # Plot FIG param posteriors
-if [ -f $MODEL_FN ]; then
-    Rscript ./scripts/plot_model_posterior.R ${MODEL_FN}
-fi
+Rscript ./scripts/plot_model_posterior.R ${MODEL_FN}
 
 # Plot RJ prob effects
-if [ -f $MODEL_FN ]; then
-    Rscript ./scripts/plot_rj_effects.R ${MODEL_FN}
-fi
-
-# Plot region rates vs. time
+Rscript ./scripts/plot_rj_effects.R ${MODEL_FN}
 
 # Plot region features vs. time
+Rscript ./scripts/plot_features_vs_time_grid.R
 
-# Plot region rates vs. features
+# Plot region rates vs. time
+Rscript ./scripts/plot_rates_vs_time_grid.R
 
+# Plot rates vs. features
+Rscript ./scripts/plot_feature_to_rate.R
 
 # ... more plots ...

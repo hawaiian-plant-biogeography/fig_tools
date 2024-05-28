@@ -8,9 +8,9 @@ library(cowplot)
 # arguments
 my_args = commandArgs(trailingOnly=T)
 
-feature_fn = "./input/hawaii_data/feature_summary.csv"
-age_fn = "./input/hawaii_data/age_summary.csv"
-desc_fn = "./input/hawaii_data/feature_description.csv"
+feature_fn = "./example_input/hawaii_data/feature_summary.csv"
+age_fn = "./example_input/hawaii_data/age_summary.csv"
+desc_fn = "./example_input/hawaii_data/feature_description.csv"
 region_names = "GNKOMHZ"
 
 if (length(my_args) == 4) {
