@@ -7,9 +7,9 @@ GEO_PREFIX=$3
 REGION_NAMES=$4
 
 if [ -z $1 ]; then
-    RESULT_PREFIX="./input/results/Kadua_M1_213"
-    CLADE_PREFIX="./input/kadua_data/kadua"
-    GEO_PREFIX="./input/hawaii_data"
+    RESULT_PREFIX="./example_input/results/divtime_timefig"
+    CLADE_PREFIX="./example_input/kadua_data"
+    GEO_PREFIX="./example_input/hawaii_data"
     REGION_NAMES="GNKOMHZ"
 fi
 
