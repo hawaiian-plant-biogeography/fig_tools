@@ -34,18 +34,16 @@ get_desc = function(df, par, proc, idx) {
 # arguments
 cmd_str = "Rscript ./scripts/plot_model_posterior.R \
                    ./example_input/results/divtime_timefig.model.txt \
-                   ./example_input/hawaii_data/feature_summary.csv \
                    ./example_input/hawaii_data/feature_description.csv"
 args = commandArgs(trailingOnly = T)
-if ( length(args) != 3 ) {
+if ( length(args) != 2 ) {
     stop_str = paste0("Invalid arguments. Correct usage:\n> ", cmd_str, "\n")
     stop(stop_str)
 }
 
 # filesystem
 model_fn          = args[1]                             # ex: model_fn = "./example_input/results/divtime_timefig.model.txt"
-feature_fn        = args[2]                             # ex: feature_fn = "./example_input/hawaii_data/feature_summary.csv"
-desc_fn           = args[3]                             # ex: desc_fn = "./example_input/hawaii_data/feature_description.csv"
+desc_fn           = args[2]                             # ex: desc_fn = "./example_input/hawaii_data/feature_description.csv"
 base_plot_fn      = "./output/out.param"
 
 # analysis vars

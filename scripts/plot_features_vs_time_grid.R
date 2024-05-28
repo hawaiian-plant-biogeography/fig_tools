@@ -1,24 +1,26 @@
 # libraries
 library(ggplot2)
 library(reshape2)
-#library(patchwork)
 library(cowplot)
 
-
 # arguments
-my_args = commandArgs(trailingOnly=T)
-
-feature_fn = "./example_input/hawaii_data/feature_summary.csv"
-age_fn = "./example_input/hawaii_data/age_summary.csv"
-desc_fn = "./example_input/hawaii_data/feature_description.csv"
-region_names = "GNKOMHZ"
-
-if (length(my_args) == 4) {
-    feature_fn = my_args[1]
-    age_fn = my_args[2]
-    desc_fn = my_args[3]
-    region_names = my_args[4]
+cmd_str = "Rscript ./scripts/plot_features_vs_time_grid.R \
+                   ./example_input/hawaii_data/feature_summary.csv \
+                   ./example_input/hawaii_data/age_summary.csv \
+                   ./example_input/hawaii_data/feature_description.csv \
+                   GNKOMHZ"
+args = commandArgs(trailingOnly = T)
+if ( length(args) != 4 ) {
+    stop_str = paste0("Invalid arguments. Correct usage:\n> ", cmd_str, "\n")
+    stop(stop_str)
 }
+
+# filesystem
+feature_fn        = args[1]                             # ex: feature_fn = "./example_input/hawaii_data/feature_summary.csv"
+age_fn            = args[2]                             # ex: age_fn = "./example_input/hawaii_data/age_summary.csv"
+desc_fn           = args[3]                             # ex: desc_fn = "./example_input/hawaii_data/feature_description.csv"
+region_names      = args[4]                             # ex: region_names = "GNKOMHZ"
+base_plot_fn      = "./output/out.param"
 
 # settings
 low_color = "#eeeeff"

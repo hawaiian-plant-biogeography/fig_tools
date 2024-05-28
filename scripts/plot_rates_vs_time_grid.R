@@ -6,24 +6,26 @@ library(cowplot)
 # library(rjson)
 library(data.table)
 
-
 # arguments
-my_args = commandArgs(trailingOnly=T)
-
-feature_fn = "./example_input/hawaii_data/feature_summary.csv"
-age_fn     = "./example_input/hawaii_data/age_summary.csv"
-desc_fn    = "./example_input/hawaii_data/feature_description.csv"
-res_fn     = "./example_input/results/"
-# res_fn = "./input/results/Kadua_crash_M1_777"
-# json_fn = "./input/results/Kadua_M1_100.param.json"
-region_names = "GNKOMHZ"
-
-if (length(my_args) == 4) {
-    feature_fn = my_args[1]
-    age_fn = my_args[2]
-    desc_fn = my_args[3]
-    region_names = my_args[4]
+cmd_str = "Rscript ./scripts/plot_rates_vs_time_grid.R \
+                   ./example_input/results/divtime_timefig
+                   ./example_input/hawaii_data/feature_summary.csv \
+                   ./example_input/hawaii_data/age_summary.csv \
+                   ./example_input/hawaii_data/feature_description.csv \
+                   GNKOMHZ"
+args = commandArgs(trailingOnly = T)
+if ( length(args) != 5 ) {
+    stop_str = paste0("Invalid arguments. Correct usage:\n> ", cmd_str, "\n")
+    stop(stop_str)
 }
+
+# filesystem
+results_fp        = args[1]                             # ex: results_fp = "./example_input/results/divtime_timefig"
+feature_fn        = args[2]                             # ex: feature_fn = "./example_input/hawaii_data/feature_summary.csv"
+age_fn            = args[3]                             # ex: age_fn = "./example_input/hawaii_data/age_summary.csv"
+desc_fn           = args[4]                             # ex: desc_fn = "./example_input/hawaii_data/feature_description.csv"
+region_names      = args[5]                             # ex: region_names = "GNKOMHZ"
+base_plot_fn      = "./output/out.param"
 
 # settings
 low_color = "#eeeeff"
@@ -35,16 +37,15 @@ df_feature = read.csv(feature_fn, sep=",", header=T)
 df_age = read.csv(age_fn, sep=",", header=T)
 df_desc = read.csv(desc_fn, sep=",", header=T)
 
-
 # files
-res_fp = "./example_input/results"
-res_prefix = "divtime_timefig"
+results_tok = strsplit(results_fp, split="/")[[1]]
+n_tok = length(results_tok)
+res_fp = paste(results_tok[1:(n_tok-1)], collapse="/")
+res_prefix = results_tok[n_tok]
 res_pattern = paste0(res_prefix, ".time.*")
 files = list.files(path=res_fp, pattern=res_pattern, full.names=T)
 
-print(files)
-print(2)
-
+# dimensions
 regions = strsplit(region_names, "")[[1]]
 ages = c(0, df_age$mean_age, 22)
 num_regions = length(regions)
