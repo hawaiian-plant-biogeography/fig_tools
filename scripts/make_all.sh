@@ -47,7 +47,10 @@ Rscript ./scripts/plot_mcc_tree.R ${MCC_FN}
 # Plot States tree
 #
 # Example:
-# > Rscript ./scripts/plot_states_tree.R ./output/out.states.tre ./example_input/kadua_data/kadua_range_label.csv GNKOMHZ
+# > Rscript ./scripts/plot_states_tree.R
+#           ./output/out.states.tre
+#           ./example_input/kadua_data/kadua_range_label.csv
+#           GNKOMHZ
 
 Rscript ./scripts/plot_states_tree.R ${LABEL_FN} ${REGION_NAMES}
 
@@ -55,19 +58,28 @@ Rscript ./scripts/plot_states_tree.R ${LABEL_FN} ${REGION_NAMES}
 # Plot range and region counts
 #
 # Example:
-# > Rscript ./scripts/plot_range_counts.R ./example_input/kadua_data/kadua_range_n7.nex ./example_input/kadua_data/kadua_range_label.csv GNKOMHZ
+# > Rscript ./scripts/plot_range_counts.R
+#           ./example_input/kadua_data/kadua_range_n7.nex
+#           ./example_input/kadua_data/kadua_range_label.csv
+#           GNKOMHZ
 
 Rscript ./scripts/plot_range_counts.R ${RANGE_FN} ${LABEL_FN} ${REGION_NAMES}
 
 
 # Plot FIG param posteriors
 #
-# Example:
-# > 
+# > Rscript ./scripts/plot_model_posterior.R \
+#           ./example_input/results/divtime_timefig.model.txt \
+#           ./example_input/hawaii_data/feature_summary.csv \
+#           ./example_input/hawaii_data/feature_description.csv
 
 Rscript ./scripts/plot_model_posterior.R ${MODEL_FN}
 
 # Plot RJ prob effects
+# 
+# Example:
+# > Rscript 
+
 Rscript ./scripts/plot_rj_effects.R ${MODEL_FN}
 
 # Plot region features vs. time
