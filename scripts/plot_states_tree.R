@@ -1,12 +1,6 @@
 library(RevGadgets)
 library(ggplot2)
 
-# mcc_fn = "./output/out.mcc.tre"
-# state_fn = "./output/out.states.tre"
-# plot_anc_pie_fn = "./output/out.states_prob.pdf"
-# plot_anc_map_fn = "./output/out.states_map.pdf"
-# labels_fn = "./input/kadua_data/kadua_range_label.csv"
-# region_names = "GNKOMHZ"
 
 # arguments
 cmd_str = "Rscript ./scripts/plot_states_tree.R ./output/out.states.tre ./output/out.mcc.tre ./example_input/kadua_data/kadua_range_label.csv GNKOMHZ"
@@ -16,13 +10,14 @@ if ( length(args) != 4 ) {
     stop(stop_str)
 }
 
-state_fn = args[1]                                       # ex: "./output/out.states.tre"
-mcc_fn = args[2]                                         # ex: "./output/out.mcc.tre"
-labels_fn = args[3]                                      # ex: "./example_input/kadua_range_label.csv"
-region_names = args[4]                                   # ex: "GNKOMHZ"
-base_fn = sub('\\..[^\\.]*$', '', state_fn)
-plot_anc_pie_fn = paste0(base_fn, ".states_prob.pdf")
-plot_anc_map_fn = paste0(base_fn, ".states_map.pdf")
+# filesystem
+state_fn          = args[1]                             # ex: "./output/out.states.tre"
+mcc_fn            = args[2]                             # ex: "./output/out.mcc.tre"
+labels_fn         = args[3]                             # ex: "./example_input/kadua_range_label.csv"
+region_names      = args[4]                             # ex: "GNKOMHZ"
+base_fn           = sub('\\..[^\\.]*$', '', state_fn)
+plot_anc_pie_fn   = paste0(base_fn, ".states_prob.pdf")
+plot_anc_map_fn   = paste0(base_fn, ".states_map.pdf")
 
 
 # Create the labels vector

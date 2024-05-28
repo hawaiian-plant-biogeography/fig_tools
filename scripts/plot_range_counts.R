@@ -2,19 +2,15 @@
 library(ape)
 
 # arguments
-args = commandArgs()
-range_fn = "./input/kadua_data/kadua_range.nex"
-label_fn = "./input/kadua_data/kadua_range_label.csv"
-region_names = "GNKOMHZ"
-if (length(args) == 1) {
-    range_fn = args[1]
+cmd_str = "Rscript ./scripts/plot_range_counts.R ./example_input/kadua_data/kadua_range_n7.nex ./example_input/kadua_data/kadua_range_label.csv GNKOMHZ"
+args = commandArgs(trailingOnly = T)
+if ( length(args) != 3 ) {
+    stop_str = paste0("Invalid arguments. Correct usage:\n> ", cmd_str, "\n")
+    stop(stop_str)
 }
-if (length(args) == 2) {
-    label_fn = args[2]
-}
-if (length(args) == 3) {
-    region_names  = args[3]
-}
+range_fn        = args[1]                                   # ex: "./example_input/kadua_data/kadua_range_n7.nex"
+label_fn        = args[2]                                   # ex: "./example_input/kadua_data/kadua_range_label.csv"
+region_names    = args[3]                                   # ex: "GNKOMHZ"
 
 # filesystem
 plot_fp = "./output/"

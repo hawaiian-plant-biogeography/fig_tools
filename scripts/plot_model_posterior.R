@@ -7,27 +7,37 @@ library(grid)
 library(gridExtra)
 
 
-args = commandArgs(trailingOnly=T)
-model_fn = "./input/results/Kadua_M1_213.model.txt"
-feature_fn = "./input/hawaii_data/feature_summary.csv"
-desc_fn = "./input/hawaii_data/feature_description.csv"
-if (length(args) == 1) {
-    model_fn = args[1]
-    feature_fn = args[2]
-    desc_fn = args[3]
+# arguments
+cmd_str = "Rscript ./scripts/plot_model_posterior.R \
+           ./example_input/results/divtime_timefig.model.txt \
+           ./example_input/hawaii_data/feature_summary.csv \
+           ./example_input/hawaii_data/feature_description.csv"
+args = commandArgs(trailingOnly = T)
+if ( length(args) != 3 ) {
+    stop_str = paste0("Invalid arguments. Correct usage:\n> ", cmd_str, "\n")
+    stop(stop_str)
 }
-base_plot_fn = "./output/out.param"
 
+# filesystem
+model_fn          = args[1]                             # ex: "./example_input/results/divtime_timefig.model.txt"
+feature_fn        = args[2]                             # ex: "./example_input/hawaii_data/feature_summary.csv"
+desc_fn           = args[3]                             # ex: "./example_input/hawaii_data/feature_description.csv"
+base_plot_fn      = "./output/out.param"
+
+# helper variables
 param_names = c("rho", "sigma", "phi")
 process_names = c("d", "e", "w", "b")
+
+# read trace file
 trace_quant = readTrace(path=model_fn, burnin=0.1)
 
-
+# helper datatables
 df_feature = read.csv(feature_fn, sep=",", header=T)
 df_desc = read.csv(desc_fn, sep=",", header=T)
 df_all = read.csv(model_fn, sep="\t", head=T)
 df_eff = df_all[ , grepl("(^phi)|(^sigma)", names(df_all))]
 
+# collect info about process <-> parameter <-> feature relationship
 param_node = names(df_eff)
 param_desc = c()
 for (i in 1:length(param_node)) {
@@ -49,18 +59,18 @@ for (i in 1:length(param_node)) {
 }
 colnames(param_desc) = c("index","relationship","type","param","process","param_label","param_name","description","full_name")
 param_desc = data.frame(param_desc)
-trace_names = names(trace_quant[[1]])
 
+
+# update trace names to include feature description
+trace_names = names(trace_quant[[1]])
 
 for (i in 1:nrow(param_desc)) {
     idx = grepl(param_desc$param_name[i],  trace_names, fixed=T)
     trace_names[idx] = paste0(trace_names[idx], " : ", param_desc$description[i])
-    #names(trace_quant[[1]])[ idx ] = param_desc$full_name[i]
-    #names(trace_quant[[1]])[ match( param_desc$param_name[i], names(trace_quant[[1]]) ) ] = param_desc$full_name[i]
 }
 names(trace_quant[[1]]) = trace_names
-#trace_names = names(trace_quant[[1]])
 
+# use RevGadgets to make combined plot for each process
 for (p in process_names) {
     
     plot_fn = paste0(base_plot_fn, "_", p, ".pdf")
