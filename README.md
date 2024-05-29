@@ -23,17 +23,34 @@ open ./output
 - `example_input` contains example data to process with `scripts`
 - `output` contains example output produced by `scripts` against `example_input`
 
-## Figures:
-- Per-region species richness: [link](output/plot_region_histogram.pdf)
-- Per-range species richness: [link](output/plot_range_histogram.pdf)
-- Maximum clade credibility tree:  [link](output/out.mcc.pdf)
-- Ancestral state trees:  [link](output/out.states_prob.pdf)
-- Feature-rate network:  [link](output/plot_feature_to_rate_network.pdf)
-- Regional features over time: [link](output/out.feat_vs_time.idx_1.rel_within.typ_quantitative.pdf)
-- Biogeographic rates over time: [link](output/rate_vs_time_process_w.pdf)
-- Biogeographic parameter plots:  [link](output/out.param_d.pdf)
-- Biogeographic reversible jump probabilities:  [link](output/out.param_rj_d.pdf)
+## Figure gallery
 
-<img src="assets/plot.states_prob.png" width="200"/>
+Per-region species richness:
+<img src="assets/plot_region_histogram.png" width="50%"/>
+
+Per-range species richness:
+<img src="assets/plot_range_histogram.png" width="50%"/>
+
+Maximum clade credibility tree:
+<img src="assets/plot_mcc_tree.png" width="50%"/>
+
+Ancestral state tree:
+<img src="assets/plot_states_prob.png" width="50%"/>
+
+Feature-rate network:
+<img src="assets/plot_feature_rate_network.png" width="50%"/>
+
+Regional features over time:
+<img src="assets/plot_features_vs_time.feat_cw1.png" width="50%"/>
+
+Biogeographic rates over time
+<img src="assets/plot_rate_vs_time.process_w.png" width="50%"/>
+
+Biogeographic parameter estimates
+<img src="assets/plot_param.process_w.png" width="50%"/>
+
+Biogeographic reversible jump probabilities
+<img src="assets/plot_param_rj.process_w.png" width="50%"/>
+
 
 This collaborative project was supported by the "Origin and Evolution of Hawaiian Plants" project (NSF DEB 2040347).
