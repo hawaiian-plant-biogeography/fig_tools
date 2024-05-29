@@ -16,8 +16,8 @@ mcc_fn            = args[2]                             # ex: "./output/out.mcc.
 labels_fn         = args[3]                             # ex: "./example_input/kadua_range_label.csv"
 region_names      = args[4]                             # ex: "GNKOMHZ"
 
-plot_anc_pie_fn   = paste0("./output/plot.states_prob.pdf")
-plot_anc_map_fn   = paste0("./output/plot.states_map.pdf")
+plot_anc_pie_fn   = paste0("./output/plot_states_prob.pdf")
+plot_anc_map_fn   = paste0("./output/plot_states_map.pdf")
 
 
 # Create the labels vector

@@ -4,7 +4,7 @@
 REGION_NAMES="GNKOMHZ"
 
 # files
-RATE_FN="./example_input/results/divtime_fig"  # no file extension
+RATE_FN="./example_input/results/divtime_timefig"  # no file extension
 PHY_FN="./example_input/results/divtime_timefig.tre"
 ANC_FN="./example_input/results/divtime_timefig.states.txt"
 MODEL_FN="./example_input/results/divtime_timefig.model.txt"
@@ -16,6 +16,9 @@ DESC_FN="./example_input/hawaii_data/feature_description.csv"
 MCC_FN="./output/out.mcc.tre"
 ASE_FN="./output/out.states.tre"
 
+Rscript ./scripts/plot_rates_vs_time_grid.R ${RATE_FN} ${FEAT_FN} ${AGE_FN} ${DESC_FN} ${REGION_NAMES}
+
+exit
 
 # Verify input files
 FILE_MISSING=0
@@ -113,6 +116,8 @@ Rscript ./scripts/plot_features_vs_time_grid.R ${FEAT_FN} ${AGE_FN} ${DESC_FN} $
 #           GNKOMHZ
 
 Rscript ./scripts/plot_rates_vs_time_grid.R ${RATE_FN} ${FEAT_FN} ${AGE_FN} ${DESC_FN} ${REGION_NAMES}
+
+exit
 
 
 # Plot rate-feature network

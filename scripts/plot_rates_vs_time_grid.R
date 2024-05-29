@@ -60,6 +60,7 @@ thin_by = 10
 # collect posterior traces
 df_time = list()
 for (i in 1:length(files)) {
+    print(files[i])
     df = read.csv(files[i], header=T, sep="\t")
 
     if (is.na(n_burn)) {
