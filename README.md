@@ -1,4 +1,4 @@
-# FIG_tools
+# fig_tools
 
 Tools to assist with Feature-Informed GeoSSE (FIG) analyses in RevBayes. Currently, this repo only contains plotting tools.
 
