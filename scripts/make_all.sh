@@ -16,10 +16,6 @@ DESC_FN="./example_input/hawaii_data/feature_description.csv"
 MCC_FN="./output/out.mcc.tre"
 ASE_FN="./output/out.states.tre"
 
-Rscript ./scripts/plot_rates_vs_time_grid.R ${RATE_FN} ${FEAT_FN} ${AGE_FN} ${DESC_FN} ${REGION_NAMES}
-
-exit
-
 # Verify input files
 FILE_MISSING=0
 for i in $PHY_FN $ANC_FN $MODEL_FN $RANGE_FN $LABEL_FN; do

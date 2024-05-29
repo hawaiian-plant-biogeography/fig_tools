@@ -15,9 +15,6 @@
 if (exists("args")) {
     phy_fn = args[1]
     state_fn = args[2]
-} else {
-    phy_fn = "./input/results/Kadua_M1_213.tre"
-    state_fn = "./input/results/Kadua_M1_213.states.txt"
 }
 
 # filesystem

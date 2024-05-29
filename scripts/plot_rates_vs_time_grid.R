@@ -44,7 +44,10 @@ n_tok = length(results_tok)
 res_fp = paste(results_tok[1:(n_tok-1)], collapse="/")
 res_prefix = results_tok[n_tok]
 res_pattern = paste0(res_prefix, ".time.*")
+print(res_pattern)
+print(res_prefix)
 files = list.files(path=res_fp, pattern=res_pattern, full.names=T)
+# num_ages = length(files)
 
 # dimensions
 regions = strsplit(region_names, "")[[1]]
@@ -60,7 +63,6 @@ thin_by = 10
 # collect posterior traces
 df_time = list()
 for (i in 1:length(files)) {
-    print(files[i])
     df = read.csv(files[i], header=T, sep="\t")
 
     if (is.na(n_burn)) {

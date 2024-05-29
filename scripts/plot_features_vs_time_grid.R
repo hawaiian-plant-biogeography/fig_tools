@@ -42,6 +42,7 @@ num_ages = length(df_age$mean_age) + 1
 col_names = c("feature_index", "feature_relationship", "feature_type")
 feature_sets = df_feature[ !duplicated( df_feature[, col_names] ), col_names ]
 
+
 for (i in 1:nrow(feature_sets)) {
     idx = feature_sets[i,1]
     rel = feature_sets[i,2]
@@ -65,6 +66,7 @@ for (i in 1:nrow(feature_sets)) {
     p_list = list()
     min_val = Inf
     max_val = -Inf
+
     for (j in 1:num_ages) {
         
         # read feature_set
@@ -88,7 +90,7 @@ for (i in 1:nrow(feature_sets)) {
         colnames(m) = c("region1", "region2", "value")
         m$region1 = factor(m$region1, ordered=T, levels=rev(regions))
         m$region2 = factor(m$region2, ordered=T, levels=regions)
-
+        
         # make plot
         p = ggplot(m, aes(x=region2, y=region1, fill=value))
         p = p + geom_tile(color="black")
