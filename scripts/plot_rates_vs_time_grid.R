@@ -13,6 +13,7 @@ cmd_str = "Rscript ./scripts/plot_rates_vs_time_grid.R \
                    ./example_input/hawaii_data/age_summary.csv \
                    ./example_input/hawaii_data/feature_description.csv \
                    GNKOMHZ"
+
 args = commandArgs(trailingOnly = T)
 if ( length(args) != 5 ) {
     stop_str = paste0("Invalid arguments. Correct usage:\n> ", cmd_str, "\n")
@@ -25,7 +26,7 @@ feature_fn        = args[2]                             # ex: feature_fn = "./ex
 age_fn            = args[3]                             # ex: age_fn = "./example_input/hawaii_data/age_summary.csv"
 desc_fn           = args[4]                             # ex: desc_fn = "./example_input/hawaii_data/feature_description.csv"
 region_names      = args[5]                             # ex: region_names = "GNKOMHZ"
-base_plot_fn      = "./output/out.param"
+base_plot_fn      = "./output/plot_rate_vs_time"
 
 # settings
 low_color = "#eeeeff"
@@ -120,7 +121,7 @@ for (y in proc) {
       draw_label(desc, fontface = 'bold', x = 0, hjust = 0
       ) + theme( plot.margin = margin(0.5, 0.5, 0.5, 7) )
         
-    plot_fn = paste0("./output/rate_vs_time_process_", y, ".pdf")
+    plot_fn = paste0(base_plot_fn, ".process_", y, ".pdf")
     p_list = list()
     for (j in 1:num_ages) {
         x = df_rate[[y]][[j]]

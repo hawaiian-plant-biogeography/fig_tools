@@ -56,7 +56,7 @@ Rscript ./scripts/plot_mcc_tree.R ${MCC_FN}
 #           ./example_input/kadua_data/kadua_range_label.csv
 #           GNKOMHZ
 
-Rscript ./scripts/plot_states_tree.R ${LABEL_FN} ${REGION_NAMES}
+Rscript ./scripts/plot_states_tree.R ${ASE_FN} ${MCC_FN} ${LABEL_FN} ${REGION_NAMES}
 
 
 # Plot range and region counts
@@ -122,6 +122,6 @@ Rscript ./scripts/plot_rates_vs_time_grid.R ${RATE_FN} ${FEAT_FN} ${AGE_FN} ${DE
 #           ./example_input/results/divtime_timefig.model.txt \
 #           ./example_input/hawaii_data/feature_description.csv
 
-Rscript ./scripts/plot_feature_rate_network ${MODEL_FN} ${DESC_FN}
+Rscript ./scripts/plot_feature_rate_network.R ${MODEL_FN} ${DESC_FN}
 
 # ... more plots ...

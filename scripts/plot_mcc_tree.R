@@ -12,7 +12,7 @@ if ( length(args) != 1 ) {
 # filesystem
 mcc_fn = args[1]   # example: "./output/out.mcc.tre"
 base_fn = sub('\\..[^\\.]*$', '', mcc_fn)
-out_fn = paste0(base_fn, ".pdf")
+out_fn = "./output/plot_mcc_tree.pdf"
 
 # read in the tree 
 mcc_tree <- readTrees(paths = mcc_fn)

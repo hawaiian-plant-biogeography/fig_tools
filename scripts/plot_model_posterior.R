@@ -22,7 +22,7 @@ if ( length(args) != 3 ) {
 model_fn          = args[1]                             # ex: "./example_input/results/divtime_timefig.model.txt"
 feature_fn        = args[2]                             # ex: "./example_input/hawaii_data/feature_summary.csv"
 desc_fn           = args[3]                             # ex: "./example_input/hawaii_data/feature_description.csv"
-base_plot_fn      = "./output/out.param"
+base_plot_fn      = "./output/plot_param"
 
 # helper variables
 param_names = c("rho", "sigma", "phi")
@@ -73,7 +73,7 @@ names(trace_quant[[1]]) = trace_names
 # use RevGadgets to make combined plot for each process
 for (p in process_names) {
     
-    plot_fn = paste0(base_plot_fn, "_", p, ".pdf")
+    plot_fn = paste0(base_plot_fn, ".process_", p, ".pdf")
 
     rho_match      = grep(paste0("^rho_", p), trace_names)
     phi_match      = grep(paste0("^phi_", p), trace_names)

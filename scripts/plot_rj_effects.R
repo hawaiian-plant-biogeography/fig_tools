@@ -44,7 +44,7 @@ if ( length(args) != 2 ) {
 # filesystem
 model_fn          = args[1]                             # ex: model_fn = "./example_input/results/divtime_timefig.model.txt"
 desc_fn           = args[2]                             # ex: desc_fn = "./example_input/hawaii_data/feature_description.csv"
-base_plot_fn      = "./output/out.param"
+base_plot_fn      = "./output/plot_param"
 
 # analysis vars
 param_names = c("sigma", "phi")
@@ -58,7 +58,7 @@ df_desc = read.csv(desc_fn, sep=",", header=T)
 # compute RJ probs for all feature pairs
 for (p in process_names) {
     
-    plot_fn = paste0(base_plot_fn, "_rj_", p, ".pdf")
+    plot_fn = paste0(base_plot_fn, "_rj.process_", p, ".pdf")
 
     #phi_match   = grep(paste0("^use_*", p), trace_names)
     rj_match = grep(paste0("^use_[a-z]*_", p), trace_names)

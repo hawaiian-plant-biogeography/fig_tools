@@ -15,9 +15,9 @@ state_fn          = args[1]                             # ex: "./output/out.stat
 mcc_fn            = args[2]                             # ex: "./output/out.mcc.tre"
 labels_fn         = args[3]                             # ex: "./example_input/kadua_range_label.csv"
 region_names      = args[4]                             # ex: "GNKOMHZ"
-base_fn           = sub('\\..[^\\.]*$', '', state_fn)
-plot_anc_pie_fn   = paste0(base_fn, ".states_prob.pdf")
-plot_anc_map_fn   = paste0(base_fn, ".states_map.pdf")
+
+plot_anc_pie_fn   = paste0("./output/plot.states_prob.pdf")
+plot_anc_map_fn   = paste0("./output/plot.states_map.pdf")
 
 
 # Create the labels vector

@@ -20,7 +20,7 @@ feature_fn        = args[1]                             # ex: feature_fn = "./ex
 age_fn            = args[2]                             # ex: age_fn = "./example_input/hawaii_data/age_summary.csv"
 desc_fn           = args[3]                             # ex: desc_fn = "./example_input/hawaii_data/feature_description.csv"
 region_names      = args[4]                             # ex: region_names = "GNKOMHZ"
-base_plot_fn      = "./output/out.param"
+base_plot_fn      = "./output/plot_features_vs_time"
 
 # settings
 low_color = "#eeeeff"
@@ -50,7 +50,11 @@ for (i in 1:nrow(feature_sets)) {
 
     row_idx = (df_feature$feature_index==idx & df_feature$feature_relationship==rel & df_feature$feature_type == typ)
     time_fn = df_feature$feature_path[row_idx]
-    plot_fn = paste0("./output/out.feat_vs_time.idx_",idx,".rel_",rel,".typ_",typ,".pdf")
+    srel = ifelse( rel=="within", "w", "b" )
+    styp = ifelse( typ=="categorical", "c", "q" )
+    slbl = paste0( styp, srel, idx )
+
+    plot_fn = paste0(base_plot_fn, ".feat_", slbl, ".pdf")
 
     title <- ggdraw() + 
       draw_label(desc, fontface = 'bold', x = 0, hjust = 0
