@@ -47,7 +47,7 @@ Biogeographic rates over time:<br>
 <img src="assets/plot_rate_vs_time.process_w.png" width="50%"/>
 
 Biogeographic parameter estimates:<br>
-<img src="assets/plot_param.process_w.png" width="50%"/>
+<img src="assets/plot_param.process_w-1.png" width="50%"/>
 
 Biogeographic reversible jump probabilities:<br>
 <img src="assets/plot_param_rj.process_w.png" width="50%"/>
