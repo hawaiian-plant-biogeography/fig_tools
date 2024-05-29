@@ -34,5 +34,6 @@ open ./output
 - Biogeographic parameter plots:  [link](output/out.param_d.pdf)
 - Biogeographic reversible jump probabilities:  [link](output/out.param_rj_d.pdf)
 
+<img src="assets/plot.states_prob.png" width="200"/>
 
 This collaborative project was supported by the "Origin and Evolution of Hawaiian Plants" project (NSF DEB 2040347).
