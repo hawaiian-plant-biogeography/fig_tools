@@ -25,31 +25,31 @@ open ./output
 
 ## Figure gallery
 
-Per-region species richness:
+Per-region species richness:<br>
 <img src="assets/plot_region_histogram.png" width="50%"/>
 
-Per-range species richness:
+Per-range species richness:<br>
 <img src="assets/plot_range_histogram.png" width="50%"/>
 
-Maximum clade credibility tree:
+Maximum clade credibility tree:<br>
 <img src="assets/plot_mcc_tree.png" width="50%"/>
 
-Ancestral state tree:
+Ancestral state tree:<br>
 <img src="assets/plot_states_prob.png" width="50%"/>
 
-Feature-rate network:
+Feature-rate network:<br>
 <img src="assets/plot_feature_rate_network.png" width="50%"/>
 
-Regional features over time:
+Regional features over time:<br>
 <img src="assets/plot_features_vs_time.feat_cw1.png" width="50%"/>
 
-Biogeographic rates over time
+Biogeographic rates over time:<br>
 <img src="assets/plot_rate_vs_time.process_w.png" width="50%"/>
 
-Biogeographic parameter estimates
-<img src="assets/plot_param.process_w.png" width="50%"/>
+Biogeographic parameter estimates:<br>
+<img src="assets/plot_param.process_w-1.png" width="50%"/>
 
-Biogeographic reversible jump probabilities
+Biogeographic reversible jump probabilities:<br>
 <img src="assets/plot_param_rj.process_w.png" width="50%"/>
 
 
