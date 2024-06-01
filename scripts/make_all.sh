@@ -31,11 +31,15 @@ if [ $FILE_MISSING == 1 ]; then
 fi
 
 
+
+Rscript ./scripts/plot_feature_rate_network.R ${MODEL_FN} ${DESC_FN}
+exit
+
 # Create RevBayes summary tree files
 #
 # Example:
 # > rb --args ./example_input/results/divtime_timefig.tre ./example_input/results/divtime_timefig.states.txt --file ./scripts/make_tree.rev
-
+echo "Making tree files"
 rb --args ${PHY_FN} ${ANC_FN} --file ./scripts/make_tree.Rev
 
 
@@ -44,6 +48,7 @@ rb --args ${PHY_FN} ${ANC_FN} --file ./scripts/make_tree.Rev
 # Example: 
 # > Rscript ./scripts/plot_mcc_tree.R ./output/out.mcc.tre
 
+echo "Making MCC tree plot"
 Rscript ./scripts/plot_mcc_tree.R ${MCC_FN}
 
 
@@ -55,6 +60,7 @@ Rscript ./scripts/plot_mcc_tree.R ${MCC_FN}
 #           ./example_input/kadua_data/kadua_range_label.csv
 #           GNKOMHZ
 
+echo "Making ancestral state tree plot"
 Rscript ./scripts/plot_states_tree.R ${ASE_FN} ${MCC_FN} ${LABEL_FN} ${REGION_NAMES}
 
 
@@ -66,6 +72,7 @@ Rscript ./scripts/plot_states_tree.R ${ASE_FN} ${MCC_FN} ${LABEL_FN} ${REGION_NA
 #           ./example_input/kadua_data/kadua_range_label.csv
 #           GNKOMHZ
 
+echo "Making species richness histogram plots"
 Rscript ./scripts/plot_range_counts.R ${RANGE_FN} ${LABEL_FN} ${REGION_NAMES}
 
 
@@ -76,6 +83,7 @@ Rscript ./scripts/plot_range_counts.R ${RANGE_FN} ${LABEL_FN} ${REGION_NAMES}
 #           ./example_input/hawaii_data/feature_summary.csv \
 #           ./example_input/hawaii_data/feature_description.csv
 
+echo "Making process parameter plots"
 Rscript ./scripts/plot_model_posterior.R ${MODEL_FN} ${FEAT_FN} ${DESC_FN}
 
 
@@ -86,6 +94,7 @@ Rscript ./scripts/plot_model_posterior.R ${MODEL_FN} ${FEAT_FN} ${DESC_FN}
 #           ./example_input/results/divtime_timefig.model.txt \
 #           ./example_input/hawaii_data/feature_description.csv
 
+echo "Making process parameter reversible-jump probability plots"
 Rscript ./scripts/plot_rj_effects.R ${MODEL_FN} ${DESC_FN}
 
 
@@ -98,6 +107,7 @@ Rscript ./scripts/plot_rj_effects.R ${MODEL_FN} ${DESC_FN}
 #           ./example_input/hawaii_data/feature_description.csv \
 #           GNKOMHZ
 
+echo "Making feature vs. time plots"
 Rscript ./scripts/plot_features_vs_time_grid.R ${FEAT_FN} ${AGE_FN} ${DESC_FN} ${REGION_NAMES}
 
 
@@ -111,9 +121,8 @@ Rscript ./scripts/plot_features_vs_time_grid.R ${FEAT_FN} ${AGE_FN} ${DESC_FN} $
 #           ./example_input/hawaii_data/feature_description.csv \
 #           GNKOMHZ
 
+echo "Making rate vs. time plots"
 Rscript ./scripts/plot_rates_vs_time_grid.R ${RATE_FN} ${FEAT_FN} ${AGE_FN} ${DESC_FN} ${REGION_NAMES}
-
-exit
 
 
 # Plot rate-feature network
@@ -123,6 +132,7 @@ exit
 #           ./example_input/results/divtime_timefig.model.txt \
 #           ./example_input/hawaii_data/feature_description.csv
 
+echo "Making feature vs. rate network plot"
 Rscript ./scripts/plot_feature_rate_network.R ${MODEL_FN} ${DESC_FN}
 
 # ... more plots ...
