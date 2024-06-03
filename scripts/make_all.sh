@@ -31,10 +31,6 @@ if [ $FILE_MISSING == 1 ]; then
 fi
 
 
-
-Rscript ./scripts/plot_feature_rate_network.R ${MODEL_FN} ${DESC_FN}
-exit
-
 # Create RevBayes summary tree files
 #
 # Example:
