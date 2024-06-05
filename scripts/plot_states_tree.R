@@ -1,7 +1,8 @@
 library(RevGadgets)
 library(ggplot2)
-install.packages("RColorBrewer", quiet=T)
-install.packages("Polychrome", quiet=T)
+# install.packages("RColorBrewer", quiet=T)
+# install.packages("Polychrome", quiet=T, repos="http://cran.us.r-project.org")
+null = tryCatch( {install.packages('Polychrome', repos='http://cran.us.r-project.org', quiet=T)}, warning=function(w){} )
 library(RColorBrewer)
 library(Polychrome)
 
