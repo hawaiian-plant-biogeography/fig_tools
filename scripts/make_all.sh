@@ -4,18 +4,27 @@
 REGION_NAMES="GNKOMHZ"
 
 # files
-RATE_FN="./example_input/results/divtime_timefig"  # no file extension
-PHY_FN="./example_input/results/divtime_timefig.tre"
-ANC_FN="./example_input/results/divtime_timefig.states.txt"
-MODEL_FN="./example_input/results/divtime_timefig.model.txt"
-RANGE_FN="./example_input/kadua_data/kadua_range_n7.nex"
-LABEL_FN="./example_input/kadua_data/kadua_range_label.csv"
-AGE_FN="./example_input/hawaii_data/age_summary.csv"
-FEAT_FN="./example_input/hawaii_data/feature_summary.csv"
-DESC_FN="./example_input/hawaii_data/feature_description.csv"
+EST_DIR="./example_input"
+DAT_DIR="./example_input"
+EST_DIR="./input/timefig"
+EST_PREFIX="results/divtime_timefig"
+EST_PREFIX="Kadua_M1_516"
+RATE_FN="${EST_DIR}/${EST_PREFIX}"  # no file extension
+PHY_FN="${EST_DIR}/${EST_PREFIX}.tre"
+ANC_FN="${EST_DIR}/${EST_PREFIX}.states.txt"
+MODEL_FN="${EST_DIR}/${EST_PREFIX}.model.txt"
+RANGE_FN="${DAT_DIR}/kadua_data/kadua_range_n7.nex"
+LABEL_FN="${DAT_DIR}/kadua_data/kadua_range_label.csv"
+AGE_FN="${DAT_DIR}/hawaii_data/age_summary.csv"
+FEAT_FN="${DAT_DIR}/hawaii_data/feature_summary.csv"
+DESC_FN="${DAT_DIR}/hawaii_data/feature_description.csv"
 MCC_FN="./output/out.mcc.tre"
 ASE_FN="./output/out.states.tre"
 
+
+#echo "Making rate vs. time plots"
+#Rscript ./scripts/plot_rates_vs_time_grid.R ${RATE_FN} ${FEAT_FN} ${AGE_FN} ${DESC_FN} ${REGION_NAMES}
+#exit 1
 # Verify input files
 FILE_MISSING=0
 for i in $PHY_FN $ANC_FN $MODEL_FN $RANGE_FN $LABEL_FN; do

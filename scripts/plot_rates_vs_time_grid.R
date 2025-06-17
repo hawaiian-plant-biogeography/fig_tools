@@ -72,7 +72,8 @@ for (i in 1:length(files)) {
 }
 
 df_all = dplyr::bind_cols(df_time)
-df_mean = colMeans(df_all)
+df_mean = apply(df_all,2,median)  #colMeans(df_all)
+#colnames(df_mean) = colnames(df
 
 df_rate = list()
 min_rate = c("w"=Inf, "e"=Inf, "d"=Inf, "b"=Inf)
@@ -132,7 +133,7 @@ for (y in proc) {
     for (j in 1:num_ages) {
         x = df_rate[[y]][[j]]
         # convert to melted long format matrix
-        m = melt(as.matrix(x))
+        m = reshape2::melt(as.matrix(x))
         colnames(m) = c("region1", "region2", "value")
         m$region1 = factor(m$region1, ordered=T, levels=rev(regions))
         m$region2 = factor(m$region2, ordered=T, levels=regions)
